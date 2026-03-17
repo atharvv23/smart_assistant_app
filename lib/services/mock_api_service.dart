@@ -1,7 +1,7 @@
 import 'dart:async';
 
 class MockApiService {
-  static final List<Map<String, dynamic>> _allSuggestions = List.generate(10, (i) {
+  static final List<Map<String, dynamic>> _allSuggestions = List.generate(30, (i) {
     final items = [
       {'title': 'Summarize my notes', 'description': 'Get a concise summary of your text'},
       {'title': 'Generate email reply', 'description': 'Create a professional email response'},

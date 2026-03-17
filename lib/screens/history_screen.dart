@@ -24,10 +24,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F7FF),
+      backgroundColor:
+          isDark ? AppTheme.darkBackground : const Color(0xFFF8F7FF),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: isDark ? AppTheme.darkSurface : Colors.white,
         elevation: 0,
         leading: IconButton(
           icon: Container(
@@ -41,10 +44,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Chat History'),
+        title: Text(
+          'Chat History',
+          style: GoogleFonts.outfit(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: isDark ? AppTheme.darkTextPrimary : AppTheme.textPrimary,
+          ),
+        ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
-          child: Container(height: 1, color: Colors.grey.withOpacity(0.1)),
+          child: Container(
+              height: 1,
+              color: isDark ? Colors.white10 : Colors.grey.withOpacity(0.1)),
         ),
       ),
       body: Consumer<HistoryProvider>(
@@ -67,13 +79,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         color: Colors.red, size: 40),
                   ),
                   const SizedBox(height: 12),
-                  Text(provider.error!,
-                      style: const TextStyle(color: AppTheme.textSecondary)),
+                  Text(
+                    provider.error!,
+                    style: GoogleFonts.outfit(
+                        color: isDark
+                            ? AppTheme.darkTextSecondary
+                            : AppTheme.textSecondary),
+                  ),
                   const SizedBox(height: 16),
                   ElevatedButton.icon(
                     onPressed: provider.fetchHistory,
                     icon: const Icon(Icons.refresh),
-                    label: const Text('Retry'),
+                    label: Text('Retry', style: GoogleFonts.outfit()),
                   ),
                 ],
               ),
@@ -100,7 +117,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     style: GoogleFonts.outfit(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
-                      color: AppTheme.textPrimary,
+                      color: isDark
+                          ? AppTheme.darkTextPrimary
+                          : AppTheme.textPrimary,
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -108,7 +127,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     'Start a chat to see your history here',
                     style: GoogleFonts.outfit(
                       fontSize: 13,
-                      color: AppTheme.textSecondary,
+                      color: isDark
+                          ? AppTheme.darkTextSecondary
+                          : AppTheme.textSecondary,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -133,7 +154,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     const SizedBox(width: 8),
                     Text(
                       '${provider.history.length} messages in history',
-                      style: const TextStyle(
+                      style: GoogleFonts.outfit(
                         color: AppTheme.primary,
                         fontWeight: FontWeight.w600,
                         fontSize: 13,

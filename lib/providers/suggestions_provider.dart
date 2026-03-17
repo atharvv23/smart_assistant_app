@@ -12,7 +12,7 @@ class SuggestionsProvider extends ChangeNotifier {
   bool _isLoadingMore = false;
   String? _error;
   int _currentPage = 1;
-  final int _limit = 20;
+  final int _limit = 10;
 
   List<Suggestion> get suggestions => _suggestions;
   Pagination? get pagination => _pagination;

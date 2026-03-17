@@ -49,7 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
       key: _scaffoldKey,
       backgroundColor: isDark ? AppTheme.darkBackground : AppTheme.background,
 
-      // ── DRAWER ──────────────────────────────────────────────
       drawer: Drawer(
         backgroundColor: isDark ? AppTheme.darkSurface : Colors.white,
         shape: const RoundedRectangleBorder(
@@ -60,7 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Column(
           children: [
-            // Drawer header
             Container(
               width: double.infinity,
               padding: const EdgeInsets.fromLTRB(20, 60, 20, 28),
@@ -334,12 +332,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
 
-                // ── COLLAPSIBLE HEADER ───────────────────────
                 SliverToBoxAdapter(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Banner
                       Container(
                         width: double.infinity,
                         margin: const EdgeInsets.all(16),
@@ -427,7 +423,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
 
-                      // Suggestions label
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 6),
@@ -447,7 +442,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
 
-                // ── SUGGESTIONS LIST ─────────────────────────
                 if (provider.isLoading)
                   const SliverFillRemaining(
                     child: LoadingIndicator(message: 'Loading suggestions...'),
